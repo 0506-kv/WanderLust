@@ -7,14 +7,9 @@ const listingSchema = new Schema({
     required: true,
   },
   description: String,
-  Image: {
-    type: String,
-    default:
-      "https://unsplash.com/photos/shadows-of-hands-almost-touching-h9UnfGJTAp4",
-    set: (v) =>
-      v === ""
-        ? "https://unsplash.com/photos/shadows-of-hands-almost-touching-h9UnfGJTAp4"
-        : v,
+  image: {
+    url: String,
+    filename: String,
   },
   price: Number,
   location: String,
