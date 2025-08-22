@@ -11,7 +11,11 @@ const listingSchema = new Schema({
     url: String,
     filename: String,
   },
-  price: Number,
+  price: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   location: String,
   country: String,
 });
