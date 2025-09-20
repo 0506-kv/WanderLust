@@ -9,8 +9,11 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    url: String,
     filename: String,
+    url: {
+      type:String,
+      default:"https://images.unsplash.com/photo-1470165301023-58dab8118cc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxvZGdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+    },
   },
   price: {
     type: Number,
