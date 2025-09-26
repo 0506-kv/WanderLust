@@ -62,18 +62,15 @@ app.use(flash());
 
 app.use(passport.initialize()); //Initialise for each request
 app.use(passport.session()); // Use session to store user info
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 passport.use(new LocalStrategy(User.authenticate())); // checks username/password
-passport.serializeUser(User.serializeUser());         // store user in session
-passport.deserializeUser(User.deserializeUser());     // retrieve user from session
 
+passport.serializeUser(User.serializeUser()); // store user in session
+passport.deserializeUser(User.deserializeUser()); // retrieve user from session
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
