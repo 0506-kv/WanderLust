@@ -1,6 +1,7 @@
 //to hide secret in production we dont push .env file to github
+
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+  require("dotenv").config({ path: "./.env" });
 }
 const express = require("express");
 const app = express();
@@ -22,6 +23,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 const dbUrl = process.env.ATLASDB_URL;
+const PORT=process.env.PORT;
 
 main()
   .then(() => {
@@ -115,6 +117,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-  console.log("Server is listening on port 8080");
+app.listen(PORT, () => {
+  console.log("Server is listening on port ");
 });
